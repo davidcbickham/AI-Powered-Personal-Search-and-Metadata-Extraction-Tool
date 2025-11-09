@@ -1,0 +1,14 @@
+# settings.yaml
+
+default:
+  INPUT_PATH: "sample_files/cuped_demo.ipynb"
+  JSON_PATH: "src/output/output.json"
+  ENV_PATH: ".env"
+
+  ANTHROPIC_MODEL: "claude-sonnet-4-20250514"
+  TEMPERATURE: 0.2
+  MAX_TOKENS_SUMMARY: 512
+  MAX_TOKENS_TOPICS: 128
+
+  EMBEDDING_MODEL: "jinaai/jina-embeddings-v2-base-en"
+  CONTENT_TRUNCATION_LIMIT: 100000

@@ -1,0 +1,83 @@
+Context: I'm an experienced Data Scientist and I want to create a tool to extract metadata from my jupyter notebooks and python files
+
+Create a Python code base to automatically extract and catalog metadata from Python scripts (.py
+) and Jupyter notebooks (.ipynb). The metadata for newly processed files should be added to a json file.
+The expectation is that the json file contents will grow with each subsequent run of the script.
+
+Requirements:
+Main Script Name: notebook_metadata_logging.py
+Json File Name: notebook_metadata_logging.json
+
+Inputs:
+input_path: file path or directory path. In cases of a folder directory path, script should process every .py or .ipynb in the directory
+json_path: file path to json file to update
+
+The following metadata should be extracted from each file:
+- File Name (str): Example, 'file_name.py'
+- File Path (str): full file path hardcoded in scripts
+- Last Modified (str): the last modified date of the file
+  - format: '2025-07-25'
+- Summary (str):
+  - Generate a 3–5 sentence paragraph summarizing what the script or notebook does
+  - Ensure the summary is written concisely and efficiently
+  - Focus on key steps like data loading, preprocessing, modeling, and evaluation.\n\n
+  - Summary should be generated using Anthropic API model="claude-sonnet-4-20250514"
+  - ATHROPIC_API_KEY is in .env file
+- Libraries (list): libraries/modules imported within the code
+  - Example:
+  [
+    "ColumnTransformer",
+    "GridSearchCV",
+    "OneHotEncoder",
+    "Pipeline",
+    "RandomForestRegressor",
+    "StandardScaler",
+    "cross_validate"
+    ]
+- Functions (list): names of functions defined within the code
+- Topics (list):
+  - 2–5 topic names generated using Anthropic API model="claude-sonnet-4-20250514" based on code within the file
+  - Topics should be concise, abstracted, and suitable for tagging or categorization purposes
+    - Consider topics such as:
+    - ML subfields (e.g., Supervised Learning, NLP, Computer Vision)
+    - Techniques (e.g., Clustering, Dimensionality Reduction, Transfer Learning)
+    - Application areas (e.g., Recommendation Systems, Time Series Forecasting, Fraud Detection)
+    - Relevant libraries or frameworks (e.g., PyTorch, Scikit-learn, HuggingFace)
+
+Output:
+- updated notebook_metadata_logging.json with new metadata from the processed file
+- Expected output:
+  [
+  {
+    "File Name":"RBMTuning.py",
+    "File Path":"/Users/davidbickham/Desktop/Personal/Udemy_Courses/Building_Recommender_Systems/RecSys-Materials/DeepLearning/RBMTuning.py",
+    "Last Modified":"2019-12-11",
+    "Summary":"This script implements and evaluates a Restricted Boltzmann Machine (RBM) recommendation system using the MovieLens dataset. It loads movie ratings data and computes popularity rankings, then performs hyperparameter tuning using GridSearchCV to find optimal hidden dimensions and learning rates for the RBM algorithm based on RMSE and MAE metrics. The script compares three different approaches: a tuned RBM with optimized parameters, an untuned RBM with default settings, and a random baseline predictor. Finally, it evaluates all algorithms using a custom Evaluator class and generates sample top-N recommendations to assess the performance of each approach.",
+    "Libraries":[
+      "Evaluator",
+      "GridSearchCV",
+      "MovieLens",
+      "NormalPredictor",
+      "RBMAlgorithm",
+      "numpy",
+      "random"
+    ],
+    "Functions":[
+      "LoadMovieLensData"
+    ],
+    "Topics":[
+      "Recommendation Systems",
+      "Restricted Boltzmann Machines",
+      "Hyperparameter Tuning",
+      "MovieLens Dataset"
+    ]
+  },
+  ]
+
+
+  Other Requirements:
+  - create virtual environemnt using pipenv
+  - Anthropic API Key stored in .env file
+  - created ReadME and .gitignore file
+  - codebase should follow a modular design, follow PEP8 best practices
+  - code should include error handling and logging best practices
