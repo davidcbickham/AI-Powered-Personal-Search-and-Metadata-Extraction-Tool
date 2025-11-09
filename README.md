@@ -11,7 +11,7 @@ If you're anything like me, your computer is full of python scripts and jupyter 
 - Lists libraries and functions used in the code
 - Generates an embedding from the code contents & metdadata using Huggingface Sentence Transformers embedding model
 - Appends metadata to a growing JSON file
-- Handles both single files and directories
+- Handles both single files and directories (INPUT_PATH in settings.yaml)
 - Modular, robust, and PEP8-compliant
 
 
