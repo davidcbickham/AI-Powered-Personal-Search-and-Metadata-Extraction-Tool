@@ -12,8 +12,6 @@ If you're anything like me, your computer is full of python scripts and jupyter 
 - Generates an embedding from the code contents & metdadata using Huggingface Sentence Transformers embedding model
 - Appends metadata to a growing JSON file
 - Handles both single files and directories (INPUT_PATH in settings.yaml)
-- Modular, robust, and PEP8-compliant
-
 
 ## Major Enhancements (In-Progress)
 - Implement batch processing for large codebases. I want all the python code on my computer processed, need to figure out the best way to do it.
